@@ -38,7 +38,7 @@ su -l ubuntu -c "/programschool/server/code-server/bin/code-server --install-ext
 
 echo "write locale.json"
 mkdir -p /home/ubuntu/.local/share/code-server/User
-chown -R ubuntu:root /home/ubuntu/.local
 echo -e "{\n\t\"locale\": \"zh-cn\"\n}" > /home/ubuntu/.local/share/code-server/User/locale.json
+chown -R ubuntu:root /home/ubuntu
 
 exit 0
