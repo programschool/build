@@ -12,7 +12,8 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "download server"
 CODE_SERVER_PATH="/programschool/server"
 mkdir -p $CODE_SERVER_PATH && cd $CODE_SERVER_PATH
-curl -sSLk https://build.boxlayer.com/code-server.tar.gz -o code-server.tar.gz
+codeVersion=$(curl -sl https://build.boxlayer.com/update | grep code)
+curl -sSLk https://build.boxlayer.com/$codeVersion -o code-server.tar.gz
 mkdir -p ./code-server && tar -zxf code-server.tar.gz -C ./code-server --strip-components 1
 rm code-server.tar.gz
 chmod 755 code-server
