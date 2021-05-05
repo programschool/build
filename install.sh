@@ -22,9 +22,9 @@ chmod 755 code-server
 echo "add user"
 USERHOME="/home/ubuntu"
 if [[ ! -x "$USERHOME" ]]; then
-    useradd ubuntu -b /home -m -p '$6$W9vAPAalRhxbEnnM$NmWqhDDRsXOmwjcd6zpiBQslI.xocZha0NmA0psV5U.zHDa9tNFsGDBx6WihoYvtuzXSn9CMQizP1hIEiaFJz1' -s /bin/bash -g root
+    useradd ubuntu -b /home -m -p "" -s /bin/bash -g root
 else
-    useradd ubuntu -b /home -M -p '$6$W9vAPAalRhxbEnnM$NmWqhDDRsXOmwjcd6zpiBQslI.xocZha0NmA0psV5U.zHDa9tNFsGDBx6WihoYvtuzXSn9CMQizP1hIEiaFJz1' -s /bin/bash -g root
+    useradd ubuntu -b /home -M -p "" -s /bin/bash -g root
 fi
 
 echo "add user to root group"
