@@ -41,7 +41,6 @@ chown -R ubuntu:root /home/ubuntu
 echo "install zh-cn extension"
 
 su ubuntu
-
 /programschool/server/code-server/bin/code-server --force --install-extension ms-ceintl.vscode-language-pack-zh-hans
 exit
 
