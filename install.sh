@@ -21,12 +21,9 @@ chmod 755 code-server
 
 # 设置默认用户
 echo "add user"
-USERHOME="/home/ubuntu"
-if [[ ! -x "$USERHOME" ]]; then
-    useradd ubuntu -b /home -m -p "" -s /bin/bash -g root
-else
-    useradd ubuntu -b /home -M -p "" -s /bin/bash -g root
-fi
+rm -rf /home/ubuntu
+useradd ubuntu -b /home -m -p "" -s /bin/bash -g root
+
 chown -R ubuntu:root /home/ubuntu # 如果开发者穿件 ubuntu 目录则需要设置权限
 
 echo "add user to root group"
@@ -34,15 +31,19 @@ echo -e "\n ubuntu ALL=(ALL)     ALL" >> /etc/sudoers
 
 locale-gen en_US.UTF-8
 
-# 安装中文扩展
-echo "install zh-cn extension"
-su -l ubuntu -c "/programschool/server/code-server/bin/code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans"
-
 echo "write locale.json"
 mkdir -p /home/ubuntu/.local/share/code-server/User
 echo -e "{\n\t\"locale\": \"zh-cn\"\n}" > /home/ubuntu/.local/share/code-server/User/locale.json
-chown -R ubuntu:root /home/ubuntu
+curl -sl https://build.boxlayer.com/languagepacks.json -o /home/ubuntu/.local/share/code-server/languagepacks.json
 
+chown -R ubuntu:root /home/ubuntu
+# 安装中文扩展
+echo "install zh-cn extension"
+
+su ubuntu
+
+/programschool/server/code-server/bin/code-server --force --install-extension ms-ceintl.vscode-language-pack-zh-hans
+exit
 
 echo "install run command"
 
