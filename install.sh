@@ -27,6 +27,7 @@ if [[ ! -x "$USERHOME" ]]; then
 else
     useradd ubuntu -b /home -M -p "" -s /bin/bash -g root
 fi
+chown -R ubuntu:root /home/ubuntu # 如果开发者穿件 ubuntu 目录则需要设置权限
 
 echo "add user to root group"
 echo -e "\n ubuntu ALL=(ALL)     ALL" >> /etc/sudoers
